@@ -30,13 +30,36 @@
                   </div>
               </div>
 
-              <nav aria-label="Primary" class="hidden sm:block">
-                  <ul class="flex items-center gap-6 text-sm font-medium">
+              <nav aria-label="Primary" class="relative">
+                  <!-- Desktop nav -->
+                  <ul class="hidden sm:flex items-center gap-6 text-sm font-medium">
                       <li><a class="hover:underline" href="#about">About</a></li>
                       <li><a class="hover:underline" href="#links">Links</a></li>
                       <li><a class="hover:underline" href="#contact">Contact</a></li>
                   </ul>
+
+                  <!-- Mobile menu wrapper -->
+                  <div id="menuWrap" class="sm:hidden relative inline-block align-top">
+                      <!-- Mobile hamburger button -->
+                      <button id="menuBtn"
+                              class="rounded-lg bg-slate-900 px-3 py-2 text-white font-medium dark:bg-slate-800"
+                              aria-expanded="false"
+                              aria-controls="mobileMenu"
+                              type="button">
+                          ☰
+                      </button>
+
+                      <!-- Mobile Dropdown -->
+                      <ul id="mobileMenu"
+                          class="hidden absolute right-0 top-0 z-50 min-w-[10rem] rounded-lg bg-slate-900 px-4 py-3 text-white text-sm font-medium shadow-lg dark:bg-slate-800">
+                          <li><a class="block rounded-md px-2 py-2 hover:bg-white/10" href="#about">About</a></li>
+                          <li><a class="block rounded-md px-2 py-2 hover:bg-white/10" href="#links">Links</a></li>
+                          <li><a class="block rounded-md px-2 py-2 hover:bg-white/10" href="#contact">Contact</a></li>
+                      </ul>
+                  </div>
+
               </nav>
+
           </div>
       </header>
 
@@ -70,7 +93,7 @@
                   <section id="about" class="card p-6 dark:bg-slate-800 dark:border-slate-700">
                       <h2 class="text-xl font-semibold">Who am I?</h2>
                       <p class="mt-3 leading-relaxed text-slate-700 dark:text-slate-200">
-                          My name is Quinton Ross. I enrolled at ECU back in 2020. I transfered here from Pitt Community College. I've spent pretty much my whole life here; I graduated highschool from DH Conley and attended both Wintergreens.
+                          My name is Quinton Ross. I enrolled at ECU back in 2020. I transferred here from Pitt Community College. I've spent pretty much my whole life here; I graduated high school from DH Conley and attended both Wintergreens.
                       </p>
 
                       <p class="mt-4 font-bold text-slate-600 dark:text-slate-300">
@@ -91,22 +114,22 @@
                       <p class="mt-2 text-slate-600 dark:text-slate-200">Check out the pages below!</p>
 
                       <div class="mt-4 grid gap-3 sm:grid-cols-2">
-                          <a class="link-tile" href="https://ecu.instructure.com/courses/163495" target="_blank" rel="noreferrer">
+                          <a class="link-tile" href="https://ecu.instructure.com/courses/163495" target="_blank" rel="noopener noreferrer">
                               <span class="font-semibold dark:text-black">Best Website</span>
                               <span class="text-sm text-slate-600">I spend all day here</span>
                           </a>
 
-                          <a class="link-tile" href="https://recoup.bid.assetworks.com/bid/f?p=2501:4000::::4000:AI_STORE:" target="_blank" rel="noreferrer">
+                          <a class="link-tile" href="https://recoup.bid.assetworks.com/bid/f?p=2501:4000::::4000:AI_STORE:" target="_blank" rel="noopener noreferrer">
                               <span class="font-semibold dark:text-black">State Surplus</span>
-                              <span class="text-sm text-slate-600">I don't konw, I ran out of links</span>
+                              <span class="text-sm text-slate-600">I don't know, I ran out of links</span>
                           </a>
 
-                          <a class="link-tile" href="https://dan-ball.jp/en/javagame/ranger/" target="_blank" rel="noreferrer">
+                          <a class="link-tile" href="https://dan-ball.jp/en/javagame/ranger/" target="_blank" rel="noopener noreferrer">
                               <span class="font-semibold dark:text-black">Stick Ranger</span>
                               <span class="text-sm text-slate-600">Java browser game I liked as a kid</span>
                           </a>
 
-                          <a class="link-tile" href="https://tinyurl.com/b2fua5ad" target="_blank" rel="noreferrer">
+                          <a class="link-tile" href="https://tinyurl.com/b2fua5ad" target="_blank" rel="noopener noreferrer">
                               <span class="font-semibold dark:text-black">Free Money</span>
                               <span class="text-sm text-slate-600">Literally gives you $1000</span>
                           </a>
@@ -124,6 +147,7 @@
                       <form name="contact"
                             method="POST"
                             data-netlify="true"
+                            action="/msgSent.html"
                             netlify
                             data-netlify-honeypot="bot-field"
                             class="mt-4 space-y-4">
@@ -133,14 +157,13 @@
                               <label>Don’t fill this out: <input name="bot-field" /></label>
                           </p>
 
-                          <input type="hidden" name="redirect" value="/msgSent.html" />
-
                           <div>
                               <label for="name" class="block text-sm font-medium">
                                   Name
                               </label>
                               <input id="name"
                                      name="name"
+                                     autocomplete="name"
                                      type="text"
                                      required
                                      placeholder="Your name"
@@ -180,6 +203,39 @@
 
       <script>
           document.getElementById("year").textContent = new Date().getFullYear();
+      </script>
+      <!-- Mobile Compatibility -->
+      <script>
+          const btn = document.getElementById("menuBtn");
+          const menu = document.getElementById("mobileMenu");
+          const wrap = document.getElementById("menuWrap");
+
+          function openMenu() {
+              btn.classList.add("hidden");
+              menu.classList.remove("hidden");
+              btn.setAttribute("aria-expanded", "true");
+          }
+
+          function closeMenu() {
+              menu.classList.add("hidden");
+              btn.classList.remove("hidden");
+              btn.setAttribute("aria-expanded", "false");
+          }
+
+          btn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              openMenu();
+          });
+
+          // Close when clicking a link
+          menu.querySelectorAll("a").forEach((link) => {
+              link.addEventListener("click", () => closeMenu());
+          });
+
+          // Close when clicking anywhere else
+          document.addEventListener("click", (e) => {
+              if (!wrap.contains(e.target)) closeMenu();
+          });
       </script>
   </body>
 </html>
