@@ -1,0 +1,75 @@
+/* Small custom CSS on top of Tailwind (layout/typography polish) */
+
+:root {
+  --card-border: rgba(15, 23, 42, 0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+    "Segoe UI Emoji";
+}
+
+code {
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.4rem;
+  background: rgba(15, 23, 42, 0.06);
+  font-size: 0.95em;
+}
+
+.card {
+  border: 1px solid var(--card-border);
+  border-radius: 1rem;
+  background: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.badge {
+  display: inline-block;
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.link-tile {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.9rem;
+  border-radius: 0.9rem;
+  border: 1px solid var(--card-border);
+  background: white;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.link-tile:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(2, 6, 23, 0.08);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.9rem;
+  border: 1px solid var(--card-border);
+  background: rgba(15, 23, 42, 0.04);
+  font-weight: 600;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0.75rem;
+  background: white;
+  border: 1px solid var(--card-border);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
+}
+
+.skip-link:focus {
+  left: 0.75rem;
+}

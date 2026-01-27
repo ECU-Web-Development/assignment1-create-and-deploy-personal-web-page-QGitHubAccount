@@ -1,0 +1,10 @@
+{
+  "name": "personal-homepage",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static personal homepage for HTML/CSS/Tailwind assignment",
+  "scripts": {
+    "start": "npx serve .",
+    "lint:html": "npx htmlhint index.html"
+  }
+}
