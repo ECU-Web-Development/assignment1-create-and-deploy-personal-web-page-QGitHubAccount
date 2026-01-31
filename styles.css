@@ -8,6 +8,9 @@
     --btn-bg: rgba(15, 23, 42, 0.04);
     --btn-fg: rgb(15, 23, 42);
     --on-tile-text: rgb(15, 23, 42);
+    --text-strong: rgb(15, 23, 42);
+    --text-body:   rgb(51, 65, 85);
+    --text-muted:  rgb(71, 85, 105);
 }
 
 .dark {
@@ -17,8 +20,13 @@
     --shell-bg: rgba(30, 41, 59, 0.8);
     --btn-bg: #ffffff;
     --btn-fg: var(--on-tile-text);
+    --text-strong: rgb(241, 245, 249);
+    --text-body:   rgb(226, 232, 240);
+    --text-muted:  rgb(203, 213, 225);
 }
 
+body {color: var(--text-strong);}
+p, li {color: var(--text-body);}
 
 html {scroll-behavior: smooth;}
 
@@ -71,6 +79,7 @@ code {
     padding: 0.25rem 0.6rem;
     border-radius: 999px;
     font-size: 0.85rem;
+    font-weight: 600;
 }
 
 .link-tile {
@@ -83,6 +92,9 @@ code {
     color: var(--on-tile-text);
     transition: transform 120ms ease, box-shadow 120ms ease;
 }
+
+.link-tile .font-semibold {color: var(--text-strong);}
+.link-tile .text-sm {color: var(--text-muted);}
 
 .link-tile:hover {
     transform: translateY(-1px);
