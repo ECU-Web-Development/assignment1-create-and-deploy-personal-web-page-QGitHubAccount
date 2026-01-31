@@ -1,9 +1,14 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cool Guy Site For Cool Guys</title>
+
+    <!-- Tailwind Integration + dark mode -->
+    <script>
+        if (window.matchMedia?.("(prefers-color-scheme: dark)")?.matches) { document.documentElement.classList.add("dark"); }
+    </script>
 
     <!-- Tailwind Integration + dark mode -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -21,229 +26,250 @@
     <link rel="manifest" href="/site.webmanifest" />
 </head>
 
-  <body class="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
-      <a class="skip-link" href="#main">Skip to content</a>
+<!-- Body -->
+<body class="min-h-screen flex flex-col bg-slate-100 dark:bg-slate-900 dark:text-slate-100">
+    <a class="skip-link" href="#main">Skip to content</a>
 
-      <!-- Header -->
-      <header class="border-b bg-white/80 backdrop-blur dark:bg-slate-800/80 dark:border-slate-700">
-          <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-5">
-              <div class="flex items-center gap-3">
-                  <div class="grid h-10 w-10 place-items-center rounded-xl bg-slate-900 text-white font-bold"
-                       aria-hidden="true">
-                      QR
-                  </div>
-                  <div>
-                      <p class="text-sm text-slate-600 dark:text-slate-200">Welcome To My</p>
-                      <p class="text-sm text-slate-600 dark:text-slate-200">Personal Homepage</p>
-                  </div>
-              </div>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-5">
+            <div class="flex items-center gap-3">
+                <div class="grid h-10 w-10 place-items-center rounded-xl bg-slate-900 text-white font-bold"
+                     aria-hidden="true">
+                    QR
+                </div>
+                <div>
+                    <p class="text-sm">Welcome To My</p>
+                    <p class="text-sm">Personal Homepage</p>
+                </div>
+            </div>
 
-              <nav aria-label="Primary" class="relative">
-                  <!-- Desktop nav -->
-                  <ul class="hidden sm:flex items-center gap-6 text-sm font-medium">
-                      <li><a class="hover:underline" href="#about">About</a></li>
-                      <li><a class="hover:underline" href="#links">Links</a></li>
-                      <li><a class="hover:underline" href="#contact">Contact</a></li>
-                  </ul>
+            <nav aria-label="Primary" class="relative">
+                <!-- Desktop nav -->
+                <ul class="hidden sm:flex items-center gap-6 text-sm font-medium">
+                    <li><a class="hover:underline" href="#about">About</a></li>
+                    <li><a class="hover:underline" href="#links">Links</a></li>
+                    <li><a class="hover:underline" href="#contact">Contact</a></li>
+                </ul>
 
-                  <!-- Mobile menu wrapper -->
-                  <div id="menuWrap" class="sm:hidden relative inline-block align-top">
-                      <!-- Mobile hamburger button -->
-                      <button id="menuBtn"
-                              class="rounded-lg bg-slate-900 px-3 py-2 text-white font-medium dark:bg-slate-800"
-                              aria-expanded="false"
-                              aria-controls="mobileMenu"
-                              type="button">
-                          ☰
-                      </button>
+                <!-- Mobile menu wrapper -->
+                <div id="menuWrap" class="sm:hidden relative inline-block align-top">
+                    <!-- Mobile hamburger button -->
+                    <button id="menuBtn"
+                            class="rounded-lg bg-slate-900 px-3 py-2 text-white font-medium dark:bg-slate-800"
+                            aria-label="Open menu"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            aria-controls="mobileMenu"
+                            type="button">
+                        ☰
+                    </button>
+                    <!-- Mobile Dropdown -->
+                    <ul id="mobileMenu"
+                        class="hidden absolute right-0 top-full mt-2 z-50 min-w-[10rem] rounded-lg px-4 py-3 text-white text-sm font-medium shadow-lg dark:bg-slate-800 bg-slate-200"
+                        role="menu">
+                        <li><a role="menuitem" class="menu-item" href="#about">About</a></li>
+                        <li><a role="menuitem" class="menu-item" href="#links">Links</a></li>
+                        <li><a role="menuitem" class="menu-item" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
 
-                      <!-- Mobile Dropdown -->
-                      <ul id="mobileMenu"
-                          class="hidden absolute right-0 top-0 z-50 min-w-[10rem] rounded-lg bg-slate-900 px-4 py-3 text-white text-sm font-medium shadow-lg dark:bg-slate-800">
-                          <li><a class="block rounded-md px-2 py-2 hover:bg-white/10" href="#about">About</a></li>
-                          <li><a class="block rounded-md px-2 py-2 hover:bg-white/10" href="#links">Links</a></li>
-                          <li><a class="block rounded-md px-2 py-2 hover:bg-white/10" href="#contact">Contact</a></li>
-                      </ul>
-                  </div>
+            </nav>
 
-              </nav>
+        </div>
+    </header>
 
-          </div>
-      </header>
+    <!-- Main -->
+    <main id="main" class="flex-1 mx-auto max-w-5xl px-4 py-8">
+        <section class="grid gap-6 lg:grid-cols-3">
+            <!-- Profile Card -->
+            <aside class="lg:col-span-1">
+                <div class="card p-5">
+                    <img src="./assets/profile.png"
+                         alt="Illustration avatar"
+                         class="mx-auto h-40 w-40 rounded-2xl shadow-sm object-cover" />
 
-      <main id="main" class="mx-auto max-w-5xl px-4 py-8">
-          <section class="grid gap-6 lg:grid-cols-3">
-              <!-- Profile Card -->
-              <aside class="lg:col-span-1">
-                  <div class="card p-5 dark:bg-slate-800 dark:border-slate-700">
-                      <img src="./assets/profile.png"
-                           alt="Illustration avatar"
-                           class="mx-auto h-40 w-40 rounded-2xl shadow-sm object-cover" />
+                    <div class="mt-4 text-center">
+                        <h1 class="text-2xl font-bold tracking-tight">Hi, I’m Q</h1>
+                        <p class="mt-2">
+                            I hand drew this profile picture. It 100% was not generated by AI. It's hard to convey sarcasm through text.
+                        </p>
+                    </div>
+                    <!-- Badges -->
+                    <div class="mt-5 flex flex-wrap justify-center gap-2">
+                        <span class="badge">Cool Guy</span>
+                        <span class="badge">Knows At Least 3 Things</span>
+                        <span class="badge">Big Head</span>
+                        <span class="badge">Currently Alive</span>
+                    </div>
+                </div>
+            </aside>
 
-                      <div class="mt-4 text-center">
-                          <h1 class="text-2xl font-bold tracking-tight">Hi, I’m Q</h1>
-                          <p class="mt-2 text-slate-600 dark:text-slate-200">
-                              I hand drew this profile picture. It 100% was not generated by AI. It's hard to convey sarcasm through text.
-                          </p>
-                      </div>
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Biography -->
+                <section id="about" class="card p-6">
+                    <h2 class="text-xl font-semibold">Who am I?</h2>
+                    <p class="mt-3 leading-relaxed">
+                        My name is Quinton Ross. I enrolled at ECU back in 2020. I transferred here from Pitt Community College. I've spent pretty much my whole life here; I graduated high school from DH Conley and attended both Wintergreens.
+                    </p>
 
-                      <div class="mt-5 flex flex-wrap justify-center gap-2 text-slate-900 dark:text-black">
-                          <span class="badge">Cool Guy</span>
-                          <span class="badge">Knows At Least 3 Things</span>
-                          <span class="badge">Big Head</span>
-                          <span class="badge">Currently Alive</span>
-                      </div>
-                  </div>
-              </aside>
+                    <p class="mt-4 font-bold">
+                        This website was/is:
+                    </p>
 
-              <section class="lg:col-span-2 space-y-6">
-                  <!-- Biography -->
-                  <section id="about" class="card p-6 dark:bg-slate-800 dark:border-slate-700">
-                      <h2 class="text-xl font-semibold">Who am I?</h2>
-                      <p class="mt-3 leading-relaxed text-slate-700 dark:text-slate-200">
-                          My name is Quinton Ross. I enrolled at ECU back in 2020. I transferred here from Pitt Community College. I've spent pretty much my whole life here; I graduated high school from DH Conley and attended both Wintergreens.
-                      </p>
+                    <ul class="mt-2 list-disc pl-5">
+                        <li>Built with semantic HTML5 structure</li>
+                        <li>Styled using Tailwind utility classes and custom CSS</li>
+                        <li>Fully responsive layout for mobile and desktop</li>
+                    </ul>
 
-                      <p class="mt-4 font-bold text-slate-600 dark:text-slate-300">
-                          This website was/is:
-                      </p>
+                </section>
 
-                      <ul class="mt-2 list-disc pl-5 text-slate-600 dark:text-slate-300">
-                          <li>Built with semantic HTML5 structure</li>
-                          <li>Styled using Tailwind utility classes and custom CSS</li>
-                          <li>Fully responsive layout for mobile and desktop</li>
-                      </ul>
+                <!-- Links -->
+                <section id="links" class="card p-6">
+                    <h2 class="text-xl font-semibold">Links</h2>
+                    <p class="mt-2">Check out the pages below!</p>
 
-                  </section>
+                    <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                        <a class="link-tile" href="https://ecu.instructure.com/courses/163495" target="_blank" rel="noopener noreferrer">
+                            <span class="font-bold dark:text-slate-600">Best Website</span>
+                            <span class="text-sm dark:text-slate-500">I spend all day here</span>
+                        </a>
 
-                  <!-- Links -->
-                  <section id="links" class="card p-6 dark:bg-slate-800 dark:border-slate-700">
-                      <h2 class="text-xl font-semibold">Links</h2>
-                      <p class="mt-2 text-slate-600 dark:text-slate-200">Check out the pages below!</p>
+                        <a class="link-tile" href="https://recoup.bid.assetworks.com/bid/f?p=2501:4000::::4000:AI_STORE:" target="_blank" rel="noopener noreferrer">
+                            <span class="font-bold dark:text-slate-600">State Surplus</span>
+                            <span class="text-sm dark:text-slate-500">I don't know, I ran out of links</span>
+                        </a>
 
-                      <div class="mt-4 grid gap-3 sm:grid-cols-2">
-                          <a class="link-tile" href="https://ecu.instructure.com/courses/163495" target="_blank" rel="noopener noreferrer">
-                              <span class="font-semibold dark:text-black">Best Website</span>
-                              <span class="text-sm text-slate-600">I spend all day here</span>
-                          </a>
+                        <a class="link-tile" href="https://dan-ball.jp/en/javagame/ranger/" target="_blank" rel="noopener noreferrer">
+                            <span class="font-bold dark:text-slate-600">Stick Ranger</span>
+                            <span class="text-sm dark:text-slate-500">Java browser game I liked as a kid</span>
+                        </a>
 
-                          <a class="link-tile" href="https://recoup.bid.assetworks.com/bid/f?p=2501:4000::::4000:AI_STORE:" target="_blank" rel="noopener noreferrer">
-                              <span class="font-semibold dark:text-black">State Surplus</span>
-                              <span class="text-sm text-slate-600">I don't know, I ran out of links</span>
-                          </a>
+                        <a class="link-tile" href="https://tinyurl.com/b2fua5ad" target="_blank" rel="noopener noreferrer">
+                            <span class="font-bold dark:text-slate-600">Free Money</span>
+                            <span class="text-sm dark:text-slate-500">Literally gives you $1000</span>
+                        </a>
+                    </div>
+                </section>
 
-                          <a class="link-tile" href="https://dan-ball.jp/en/javagame/ranger/" target="_blank" rel="noopener noreferrer">
-                              <span class="font-semibold dark:text-black">Stick Ranger</span>
-                              <span class="text-sm text-slate-600">Java browser game I liked as a kid</span>
-                          </a>
+                <!-- Contact -->
+                <section id="contact" class="card p-6">
+                    <h2 class="text-xl font-semibold">Contact</h2>
+                    <p class="mt-2">
+                        Send me a message below or tell your carrier pigeon to come find me!!
+                    </p>
 
-                          <a class="link-tile" href="https://tinyurl.com/b2fua5ad" target="_blank" rel="noopener noreferrer">
-                              <span class="font-semibold dark:text-black">Free Money</span>
-                              <span class="text-sm text-slate-600">Literally gives you $1000</span>
-                          </a>
-                      </div>
-                  </section>
+                    <!-- Netlify Form -->
+                    <form name="contact"
+                          method="POST"
+                          data-netlify="true"
+                          action="/msgSent.html"
+                          data-netlify-honeypot="bot-field"
+                          class="mt-4 space-y-4">
+                        <!-- Required hidden field for Netlify -->
+                        <input type="hidden" name="form-name" value="contact" />
+                        <p class="hidden">
+                            <label>Don’t fill this out: <input name="bot-field" /></label>
+                        </p>
+                        <!-- Netlify Form Name Section -->
+                        <div>
+                            <label for="name" class="block text-sm font-medium">
+                                Name
+                            </label>
+                            <input id="name"
+                                   name="name"
+                                   autocomplete="name"
+                                   type="text"
+                                   required
+                                   placeholder="Your name"
+                                   class="mt-1 w-full rounded-lg border border-slate-300 p-2 text-slate-900" />
+                        </div>
+                        <!-- Netlify Form Message Section -->
+                        <div>
+                            <label for="message" class="block text-sm font-medium">
+                                Message
+                            </label>
+                            <textarea id="message"
+                                      name="message"
+                                      rows="4"
+                                      required
+                                      placeholder="What do you want to tell me?"
+                                      class="mt-1 w-full rounded-lg border border-slate-300 p-2 text-slate-900"></textarea>
+                        </div>
 
-                  <!-- Contact -->
-                  <section id="contact" class="card p-6 dark:bg-slate-800 dark:border-slate-700">
-                      <h2 class="text-xl font-semibold">Contact</h2>
-                      <p class="mt-2 text-slate-700 dark:text-slate-200">
-                          Want to get in touch?? Send me a message below!
-                      </p>
+                        <button type="submit" class="btn">
+                            Send Message
+                        </button>
+                    </form>
+                </section>
 
-                      <!-- Netlify Form -->
-                      <form name="contact"
-                            method="POST"
-                            data-netlify="true"
-                            action="/msgSent.html"
-                            netlify
-                            data-netlify-honeypot="bot-field"
-                            class="mt-4 space-y-4">
-                          <!-- Required hidden field for Netlify -->
-                          <input type="hidden" name="form-name" value="contact" />
-                          <p class="hidden">
-                              <label>Don’t fill this out: <input name="bot-field" /></label>
-                          </p>
+            </div>
+        </section>
+    </main>
 
-                          <div>
-                              <label for="name" class="block text-sm font-medium">
-                                  Name
-                              </label>
-                              <input id="name"
-                                     name="name"
-                                     autocomplete="name"
-                                     type="text"
-                                     required
-                                     placeholder="Your name"
-                                     class="mt-1 w-full rounded-lg border border-slate-300 p-2 text-slate-900 dark:text-slate-900" />
-                          </div>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="mx-auto max-w-5xl px-4 py-6">
+            <p>© <span id="year"></span> ROSSQ20. Built with HTML, styled with CSS, and Tailwind.</p>
+        </div>
+    </footer>
 
-                          <div>
-                              <label for="message" class="block text-sm font-medium">
-                                  Message
-                              </label>
-                              <textarea id="message"
-                                        name="message"
-                                        rows="4"
-                                        required
-                                        placeholder="What do you want to tell me?"
-                                        class="mt-1 w-full rounded-lg border border-slate-300 p-2 text-slate-900 dark:text-slate-900"></textarea>
-                          </div>
+    <!-- Get Year -->
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 
-                          <button type="submit" class="btn dark:bg-white dark:text-slate-900">
-                              Send Message
-                          </button>
-                      </form>
-                  </section>
+    <!-- Nav Menu Functionality -->
+    <script>
+        const btn = document.getElementById("menuBtn");
+        const menu = document.getElementById("mobileMenu");
+        const wrap = document.getElementById("menuWrap");
 
-              </section>
-          </section>
-      </main>
+        function isOpen() {
+            return !menu.classList.contains("hidden");
+        }
 
-      <footer class="border-t bg-white dark:bg-slate-800 dark:border-slate-700">
-          <div class="mx-auto max-w-5xl px-4 py-6 text-sm text-slate-600">
-              <p class="text-slate-600 dark:text-slate-300">
-                  © <span id="year"></span> rossq20. Built with HTML, CSS, and Tailwind.
-              </p>
+        function openMenu() {
+            menu.classList.remove("hidden");
+            btn.setAttribute("aria-expanded", "true");
+            btn.setAttribute("aria-label", "Close menu");
+            btn.textContent = "✕";
 
-          </div>
-      </footer>
+            // Focus first item for keyboard users
+            const firstLink = menu.querySelector("a");
+            if (firstLink) firstLink.focus();
+        }
 
-      <script>
-          document.getElementById("year").textContent = new Date().getFullYear();
-      </script>
-      <!-- Mobile Compatibility -->
-      <script>
-          const btn = document.getElementById("menuBtn");
-          const menu = document.getElementById("mobileMenu");
-          const wrap = document.getElementById("menuWrap");
+        function closeMenu() {
+            menu.classList.add("hidden");
+            btn.setAttribute("aria-expanded", "false");
+            btn.setAttribute("aria-label", "Open menu");
+            btn.textContent = "☰";
+            btn.focus();
+        }
 
-          function openMenu() {
-              btn.classList.add("hidden");
-              menu.classList.remove("hidden");
-              btn.setAttribute("aria-expanded", "true");
-          }
+        btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            isOpen() ? closeMenu() : openMenu();
+        });
 
-          function closeMenu() {
-              menu.classList.add("hidden");
-              btn.classList.remove("hidden");
-              btn.setAttribute("aria-expanded", "false");
-          }
+        // Close when clicking a link
+        menu.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => closeMenu());
+        });
 
-          btn.addEventListener("click", (e) => {
-              e.stopPropagation();
-              openMenu();
-          });
+        // Close when clicking anywhere else
+        document.addEventListener("click", (e) => {
+            if (isOpen() && !wrap.contains(e.target)) closeMenu();
+        });
 
-          // Close when clicking a link
-          menu.querySelectorAll("a").forEach((link) => {
-              link.addEventListener("click", () => closeMenu());
-          });
+        // Close on Escape
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && isOpen()) closeMenu();
+        });
+    </script>
 
-          // Close when clicking anywhere else
-          document.addEventListener("click", (e) => {
-              if (!wrap.contains(e.target)) closeMenu();
-          });
-      </script>
-  </body>
+</body>
+
 </html>
